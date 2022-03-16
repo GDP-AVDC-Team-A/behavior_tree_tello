@@ -1,0 +1,73 @@
+nodes:
+  - id: 1
+    node_name: Mission
+    node_type: SEQUENCE
+    task: LAND
+    parameters: ""
+    is_recurrent: true
+    activate: false
+    parent: 0
+  - id: 2
+    node_name: Take off
+    node_type: TASK
+    task: TAKE_OFF
+    parameters: ""
+    is_recurrent: false
+    activate: false
+    parent: 1
+  - id: 3
+    node_name: Movement
+    node_type: SEQUENCE
+    task: LAND
+    parameters: ""
+    is_recurrent: true
+    activate: false
+    parent: 1
+  - id: 4
+    node_name: Move vertical
+    node_type: TASK
+    task: MOVE_VERTICAL
+    parameters: "distance: 1"
+    is_recurrent: false
+    activate: false
+    parent: 3
+  - id: 5
+    node_name: Rotate
+    node_type: TASK
+    task: ROTATE
+    parameters: "relative_angle: 90"
+    is_recurrent: false
+    activate: false
+    parent: 3
+  - id: 6
+    node_name: Move forward
+    node_type: TASK
+    task: MOVE_AT_SPEED
+    parameters: "direction: 'FORWARD'"
+    is_recurrent: true
+    activate: true
+    parent: 3
+  - id: 7
+    node_name: Wait
+    node_type: TASK
+    task: WAIT
+    parameters: "duration: 6"
+    is_recurrent: false
+    activate: false
+    parent: 3
+  - id: 8
+    node_name: Hover
+    node_type: TASK
+    task: HOVER
+    parameters: ""
+    is_recurrent: true
+    activate: false
+    parent: 3
+  - id: 9
+    node_name: Final landing
+    node_type: TASK
+    task: LAND
+    parameters: ""
+    is_recurrent: false
+    activate: false
+    parent: 1
